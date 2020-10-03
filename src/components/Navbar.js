@@ -2,26 +2,44 @@ import React from "react";
 import {
     AppBar,
     Toolbar,
-    // ListItems,
+    ListItem,
     IconButton,
-    // ListItemText,
+    ListItemIcon,
+    ListItemText,
     Avatar,
     Divider,
-    // List,
+    List,
     Typography,
     Box,
 } from "@material-ui/core";
 import {
     ArrowBack,
-    // Home,
-    // AssignmentInd,
-    // Apps,
-    // ContactMail
+    Home,
+    AssignmentInd,
+    Apps,
+    ContactMail
 } from "@material-ui/icons";
 import avatar from '../images/avatar.png'
 import { makeStyles} from '@material-ui/core/styles';
 
-
+const menuItems =[
+    {
+        listIcon:<Home/>,
+        listText:"Home"
+    },
+    {
+        listIcon:<AssignmentInd/>,
+        listText:"Resume"
+    },
+    {
+        listIcon:<Apps/>,
+        listText:"Portfolio"
+    },
+    {
+        listIcon:<ContactMail/>,
+        listText:"Contact"
+    }
+]
 
 const useStyles = makeStyles(theme=>({
     menustyle:{
@@ -34,6 +52,9 @@ const useStyles = makeStyles(theme=>({
         margin:'0.5rem auto',
         width:theme.spacing(13),
         height:theme.spacing(13)
+    },
+    listIconColor:{
+        color:'tan'
     }
 }))
 
@@ -44,6 +65,17 @@ function Navbar() {
         <Box className={classes.menustyle} component='div'> 
         <Avatar className={classes.avatar} src={avatar} alt="Robert Obiri Jnr"/>
         <Divider/>
+        <List>
+       { menuItems.map((listItem,key)=>(
+            <ListItem button key={key}>
+            <ListItemIcon className={classes.listIconColor}>
+                {listItem.listIcon}
+            </ListItemIcon>
+            <ListItemText className={classes.listIconColor} primary={listItem.listText}/>
+        </ListItem>
+       ))}
+           
+        </List>
         </Box>
         <Box container="nav">
             <AppBar position="static" style={{background:'#222'}}>
