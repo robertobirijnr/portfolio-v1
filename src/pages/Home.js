@@ -16,6 +16,16 @@ const useStyles = makeStyles(theme=>({
     },
     Subtitle:{
         color:"tan",
+        marginButton:"3rem"
+    },
+    root:{
+        position:'absolute',
+        top:'50%',
+        left:'50%',
+        transform:'translate(-50%,-50%)',
+        width:'100vw',
+        textAlign:"center",
+        zIndex:1
     }
 }))
 
@@ -23,8 +33,11 @@ function Home() {
 
     const classes = useStyles()
     return (
-        <Box>
-           <Avatar className={classes.avatar} src={avatar} alt="Robert Obiri Jnr"/>
+        <Box className={classes.root}>
+            <Grid container justify="center">
+            <Avatar className={classes.avatar} src={avatar} alt="Robert Obiri Jnr"/>
+            </Grid>
+           
            <Typography variant="h4" className={classes.title}>
                 <Typed strings={["Robert Obiri"]} typeSpeed={40}/>
            </Typography>
