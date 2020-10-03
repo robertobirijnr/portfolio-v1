@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
     AppBar,
     Toolbar,
@@ -21,6 +21,9 @@ import {
 } from "@material-ui/icons";
 import avatar from '../images/avatar.png'
 import { makeStyles} from '@material-ui/core/styles';
+import MobileRightDrawer from '@material-ui/core/Drawer'
+
+
 
 const menuItems =[
     {
@@ -60,8 +63,15 @@ const useStyles = makeStyles(theme=>({
 
 function Navbar() {
     const  classes = useStyles();
-    return (
-        <>
+    const [state, setState] = useState({
+        right:false
+    })
+
+    const toggleSlider = (slider,open) =>()=>{
+        setState({...state,[slider]:open})
+    }
+
+    const sideDrawer = slider =>(
         <Box className={classes.menustyle} component='div'> 
         <Avatar className={classes.avatar} src={avatar} alt="Robert Obiri Jnr"/>
         <Divider/>
@@ -77,6 +87,10 @@ function Navbar() {
            
         </List>
         </Box>
+    );
+    return (
+        <>
+       
         <Box container="nav">
             <AppBar position="static" style={{background:'#222'}}>
                 <Toolbar >
@@ -84,6 +98,11 @@ function Navbar() {
                     <ArrowBack style={{color:'tomato'}} />
                     </IconButton>  
                     <Typography variant='h5' style={{color:'tan'}}>Portfolio</Typography>
+                    <MobileRightDrawer
+                    open={state.right}
+                    >
+                        {sideDrawer("right")}
+                    </MobileRightDrawer>
                 </Toolbar>
             </AppBar>
         </Box>
