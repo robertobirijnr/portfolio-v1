@@ -10,7 +10,6 @@ function App() {
       <CssBaseline/>
       <Navbar/>
       <Home/>
-      <h2>My portfolio website</h2>
     </div>
   );
 }
