@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme=>({
     menustyle:{
         width:250,
         background:'#511',
-        height:'30rem'
+        height:'100%'
     },
     avatar:{
         display:'block',
@@ -72,13 +72,18 @@ function Navbar() {
     }
 
     const sideDrawer = slider =>(
-        <Box className={classes.menustyle} component='div'> 
+        <Box 
+        className={classes.menustyle}
+         component='div'
+         onClick={toggleSlider(slider,false)}
+         > 
+
         <Avatar className={classes.avatar} src={avatar} alt="Robert Obiri Jnr"/>
         <Divider/>
-        <List>
+        <List> 
        { menuItems.map((listItem,key)=>(
             <ListItem button key={key}>
-            <ListItemIcon className={classes.listIconColor}>
+            <ListItemIcon className={classes.listIconColor} onClicl={toggleSlider("right",true)}>
                 {listItem.listIcon}
             </ListItemIcon>
             <ListItemText className={classes.listIconColor} primary={listItem.listText}/>
@@ -99,7 +104,9 @@ function Navbar() {
                     </IconButton>  
                     <Typography variant='h5' style={{color:'tan'}}>Portfolio</Typography>
                     <MobileRightDrawer
+                    anchor="right"
                     open={state.right}
+                    onClose={toggleSlider("right",false)}
                     >
                         {sideDrawer("right")}
                     </MobileRightDrawer>
