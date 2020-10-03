@@ -83,7 +83,7 @@ function Navbar() {
         <List> 
        { menuItems.map((listItem,key)=>(
             <ListItem button key={key}>
-            <ListItemIcon className={classes.listIconColor} onClicl={toggleSlider("right",true)}>
+            <ListItemIcon className={classes.listIconColor} >
                 {listItem.listIcon}
             </ListItemIcon>
             <ListItemText className={classes.listIconColor} primary={listItem.listText}/>
@@ -99,7 +99,7 @@ function Navbar() {
         <Box container="nav">
             <AppBar position="static" style={{background:'#222'}}>
                 <Toolbar >
-                    <IconButton>
+                    <IconButton onClick={toggleSlider("right",true)}>
                     <ArrowBack style={{color:'tomato'}} />
                     </IconButton>  
                     <Typography variant='h5' style={{color:'tan'}}>Portfolio</Typography>
